@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Styles.css">
+</head>
+
+<body>
+    <div id="kontener-plaza">
+
+        <video id="plaza" autoplay>
+            <source src="./Ania_3.webm">
+        </video>
+        <div class="neon-container"><video src="./Ania_neon.mp4" id="neon" autoplay loop></video></div>
+        <div id="loading">
+            <div id="loading_tap"></div>
+        </div>
+        <div id="serca"></div>
+        <div id="serca-2"></div>
+
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/lottie-web@5.10.2/build/player/lottie.min.js'></script>
+    <script>
+        let element = document.getElementById('loading');
+        lottie.loadAnimation({
+            container: element, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: './Lottie_JSON/141949-blue-dots-moving-round.json' // the path to the animation json
+        });
+    </script>
+    <script>
+        let element_3 = document.getElementById('loading_tap');
+        lottie.loadAnimation({
+            container: element_3, // the dom element that will contain the animation
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: './Lottie_JSON/97697-hand-tap.json' // the path to the animation json
+        });
+    </script>
+    <script>
+        let plazaActive = document.getElementById('plaza');
+        let element_2 = document.getElementById('loading');
+        let element_6 = document.getElementById('neon');
+        element_2.addEventListener("click", function () {
+            plazaActive.classList.add('plaza_active');
+            element_6.classList.add('neon-hidden');
+        });
+    </script>
+    <script>
+        let element_5 = document.getElementById('loading_top');
+        let element_4 = document.getElementById('loading');
+        element_4.addEventListener("click", function () {
+            this.classList.add('hidden');
+        });
+        element_4.addEventListener("click", function () {
+            element_5.classList.add('hidden');
+        });
+    </script>
+    <script>
+
+
+        element_4.addEventListener("click", function () {
+            let element_7 = document.getElementById('serca');
+            let element_8 = document.getElementById('serca-2');
+            let animation_1 = lottie.loadAnimation({
+                container: element_7, // the dom element that will contain the animation
+                renderer: 'svg',
+                loop: false,
+                autoplay: true,
+                path: './Lottie_JSON/71128-one-color-love-float.json' // the path to the animation json
+            });
+            let animation_2 = lottie.loadAnimation({
+                container: element_8, // the dom element that will contain the animation
+                renderer: 'svg',
+                loop: 1,
+                autoplay: true,
+                path: './Lottie_JSON/67021-love-animation-with-particle.json' // the path to the animation json
+            });
+            element_8.classList.add("grow")
+            animation_1.addEventListener('complete', function () {
+                // Dodaj klasę CSS "hidden" do kontenera animacji
+                element_7.classList.add('hidden');
+            });
+            animation_2.addEventListener('complete', function () {
+                // Dodaj klasę CSS "hidden" do kontenera animacji
+                element_8.classList.add('hidden');
+                console.log("You've captured the ready event!");
+            });
+            let video = document.getElementById('plaza');
+            video.play();
+            let video_2 = document.getElementById('neon');
+            video_2.play();
+        });
+
+    </script>
+</body>
+
+</html>
